@@ -2,7 +2,6 @@ import { Contract, utils } from "ethers";
 import { useEffect, useState } from "react";
 import { address, abi } from "../constants";
 export default function Home(props) {
-  const [loading, setLoading] = useState(false);
   const [balance, setBalance] = useState(0);
   const [mintAmount, setMintAmount] = useState(0);
 
@@ -24,10 +23,8 @@ export default function Home(props) {
       const tx = await contract.mint(mintAmount, {
         value: utils.parseEther(eth.toString()),
       });
-      setLoading(true);
       await tx.wait();
       checkBal();
-      setLoading(false);
       window.alert("Successfully Minted UrbanNFT");
     } catch (error) {
       console.error(error);
@@ -49,8 +46,8 @@ export default function Home(props) {
     <div className="text-center relative top-48 w-2/5 m-auto">
       <h1 className="font-bold text-2xl md:text-4xl lg:text-7xl">UrbanPunks</h1>
       <p>
-        It's 2050, Can UrbanPunks NFT save humans from destructive rampant NFT
-        speculation? Mint UrbanPunks to find out.<br></br>
+        It&apos s 2050, Can UrbanPunks NFT save humans from destructive rampant
+        NFT speculation? Mint UrbanPunks to find out.<br></br>
         You must be connected to Mint.
       </p>
       <div className="relative top-10">
